@@ -1,0 +1,50 @@
+<template>
+	<sn-flutter-view ref="flutter" :instanceId="instanceId" :entryPoint="entryPoint" :params="params" destroyAfterBack="true" @pop="onPop" @popChange="popChange" style="flex:1;" />
+</template>
+
+<script>
+import { MethodChannel } from '@/js/flutter/flutter.js';
+export default {
+	data() {
+		return {
+			canPop: false,
+			instanceId: 'topMain',
+			entryPoint: 'main',
+			params: {
+				a: 1
+			}
+		};
+	},
+	onBackPress() {
+		if (this.canPop) {
+			this.$refs.flutter.pop();
+			return true;
+		}
+	},
+	onLoad() {
+		this.methodChannel = new MethodChannel(this.instanceId);
+		this.methodChannel.$on('test', e => {
+			uni.showToast({
+				title: JSON.stringify(e),
+				icon: 'none'
+			});
+			if (e.callbackId) {
+				this.methodChannel.callback(e.callbackId, { result: 3 });
+			}
+		});
+	},
+	onUnload() {
+		this.methodChannel.$off('test');
+	},
+	methods: {
+		onPop() {
+			uni.navigateBack();
+		},
+		popChange({ detail }) {
+			this.canPop = detail.pop;
+		}
+	}
+};
+</script>
+
+<style></style>

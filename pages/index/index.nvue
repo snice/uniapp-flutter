@@ -1,0 +1,53 @@
+<template>
+	<view>
+		<button type="default" @click="openFlutter">FlutterPage</button>
+		<button type="default" @click="openFlutterView">FlutterView</button>
+	</view>
+</template>
+
+<script>
+import { MethodChannel } from '@/js/flutter/flutter.js';
+var flutter = uni.requireNativePlugin('sn-flutter');
+export default {
+	data() {
+		return {};
+	},
+	methods: {
+		openFlutter() {
+			let methodChannel = new MethodChannel('topMain');
+			methodChannel.$on('test', e => {
+				if (e.callbackId) {
+					methodChannel.callback(e.callbackId, { result: 3 });
+				} else {
+					uni.showToast({
+						title: JSON.stringify(e),
+						icon: 'none'
+					});
+				}
+			});
+			flutter.openPage({
+				instanceId: 'topMain',
+				id: 'main',
+				params: {
+					a: 1
+				}
+			});
+			setTimeout(() => {
+				// methodChannel.invokeMethod('test', { a: 3 });
+				methodChannel.invokeMethod('test', { a: 3 }, e => {
+					uni.showModal({
+						title: JSON.stringify(e)
+					});
+				});
+			}, 4000);
+		},
+		openFlutterView() {
+			uni.navigateTo({
+				url: '/pages/flutter/flutter'
+			});
+		}
+	}
+};
+</script>
+
+<style></style>
