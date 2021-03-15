@@ -11,7 +11,14 @@ export class MethodChannel {
 		})
 	}
 
-	invokeMethod(method, params, fun = undefined) {
+	$on(id, fun) {
+		this.msgHandlers.set(id, fun);
+	}
+	$off(id) {
+		this.msgHandlers.delete(id);
+	}
+
+	$emit(method, params, fun = undefined) {
 		if (fun) {
 			this.flutter.postMessageWithCallback({
 				instanceId: this.instanceId,
@@ -38,10 +45,4 @@ export class MethodChannel {
 		})
 	}
 
-	$on(id, fun) {
-		this.msgHandlers.set(id, fun);
-	}
-	$off(id) {
-		this.msgHandlers.delete(id);
-	}
 }
