@@ -16,6 +16,7 @@ export default {
 		openFlutter() {
 			let methodChannel = new MethodChannel('topMain');
 			methodChannel.$on('test', e => {
+				console.log('test', e);
 				if (e.callbackId) {
 					methodChannel.callback(e.callbackId, { result: 3 });
 				} else {
@@ -33,12 +34,12 @@ export default {
 				}
 			});
 			setTimeout(() => {
-				// methodChannel.$emit('test', { a: 3 });
-				methodChannel.$emit('test', { a: 3 }, e => {
-					uni.showModal({
-						title: JSON.stringify(e)
-					});
-				});
+				methodChannel.$emit('test', { a: 3 });
+				// methodChannel.$emit('test', { a: 3 }, e => {
+				// 	uni.showModal({
+				// 		title: JSON.stringify(e)
+				// 	});
+				// });
 			}, 4000);
 		},
 		openFlutterView() {

@@ -1,7 +1,7 @@
 {
   "name": "Flutter插件",
   "id": "sn-flutter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "提供Flutter框架集成",
   "_dp_type": "nativeplugin",
   "_dp_nativeplugin": {
@@ -13,9 +13,6 @@
         "sourceCompatibility": "1.8",
         "targetCompatibility": "1.8"
       },
-      "dependencies": [
-        "androidx.core:core-ktx:1.2.0"
-      ],
       "hooksClass": "com.itfenbao.snplugin.flutter.FlutterProxy",
       "plugins": [
         {
@@ -29,6 +26,31 @@
           "class": "com.itfenbao.snplugin.flutter.FlutterComponent"
         }
       ]
+    },
+    "ios": {
+      "integrateType": "framework",
+      "hooksClass": "SnUniFlutterProxy",
+      "plugins": [
+        {
+          "type": "module",
+          "name": "sn-flutter",
+          "class": "SnUniFlutterModule"
+        },
+        {
+          "type": "component",
+          "name": "sn-flutter-view",
+          "class": "SnUniFlutterComponent"
+        }
+      ],
+      "frameworks": [
+        "Flutter.framework",
+        "App.framework"
+      ],
+      "embedFrameworks": [
+        "Flutter.framework",
+        "App.framework"
+      ],
+      "deploymentTarget": "9.0"
     }
   }
 }
