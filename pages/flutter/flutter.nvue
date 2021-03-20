@@ -42,6 +42,13 @@ export default {
 		},
 		popChange({ detail }) {
 			this.canPop = detail.pop;
+			const isIOS = uni.getSystemInfoSync().platform == 'ios';
+			if (isIOS) {
+				const currentWebView = this.$scope.$getAppWebview();
+				currentWebView.setStyle({
+					popGesture: this.canPop ? 'none' : 'close'
+				});
+			}
 		}
 	}
 };
