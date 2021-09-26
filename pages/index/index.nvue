@@ -1,7 +1,7 @@
 <template>
 	<view>
-		<button type="default" @click="openFlutter">FlutterPage</button>
-		<button type="default" @click="openFlutterView">FlutterView</button>
+		<button type="default" @click="openFlutter">打开FlutterPage</button>
+		<button type="default" @click="openFlutterView">打开FlutterView</button>
 	</view>
 </template>
 
@@ -13,22 +13,26 @@ export default {
 		return {};
 	},
 	methods: {
-		openFlutter() {
+		async openFlutter() {
+			const result = await uniCloud.callFunction({ name: 'test', data: {} });
+			console.log('cloud test:', result);
 			let methodChannel = new MethodChannel('topMain');
 			methodChannel.$on('test', e => {
 				console.log('test', e);
 				if (e.callbackId) {
 					methodChannel.callback(e.callbackId, { result: 3 });
 				} else {
-					uni.showToast({
-						title: JSON.stringify(e),
-						icon: 'none'
-					});
+					console.log('toast')
+					// uni.showToast({
+					// 	duration: 4000,
+					// 	title: JSON.stringify(e),
+					// 	icon: 'none'
+					// });
 				}
 			});
 			flutter.openPage({
 				instanceId: 'topMain',
-				id: 'main',
+				entryPoint: 'topMain',
 				params: {
 					a: 1
 				}

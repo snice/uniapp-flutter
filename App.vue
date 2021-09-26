@@ -5,7 +5,7 @@ export default {
 		// #ifdef APP-PLUS
 		var flutter = uni.requireNativePlugin('sn-flutter');
 		flutter.cachePages({
-			pages: ['main']
+			pages: ['topMain']
 		});
 		// #endif
 	},

@@ -1,0 +1,74 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
+// swift-module-flags: -target armv7-apple-ios8.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name OrderedSet
+@_exported import OrderedSet
+import Swift
+import _Concurrency
+public struct OrderedSet<T> where T : Swift.Hashable {
+  public init()
+  public init<S>(sequence: S) where T == S.Element, S : Swift.Sequence
+  public init(arrayLiteral elements: T...)
+  public func index(of object: T) -> OrderedSet.OrderedSet<T>.Index?
+  public mutating func append(_ object: T)
+  public mutating func append<S>(contentsOf sequence: S) where T == S.Element, S : Swift.Sequence
+  @discardableResult
+  public mutating func remove(_ object: T) -> OrderedSet.OrderedSet<T>.Index?
+  @discardableResult
+  public mutating func remove<S>(_ objects: S) -> [OrderedSet.OrderedSet<T>.Index]? where T == S.Element, S : Swift.Sequence
+  public mutating func removeObject(at index: OrderedSet.OrderedSet<T>.Index)
+  public mutating func removeAllObjects()
+  public mutating func swapObject(_ first: T, with second: T)
+  public func intersects<S>(_ other: S) -> Swift.Bool where T == S.Element, S : Swift.Sequence
+  public func isSubset<S>(of sequence: S) -> Swift.Bool where T == S.Element, S : Swift.Sequence
+  public mutating func moveObject(_ object: T, toIndex index: OrderedSet.OrderedSet<T>.Index)
+  public mutating func moveObject(at index: OrderedSet.OrderedSet<T>.Index, to toIndex: OrderedSet.OrderedSet<T>.Index)
+  public mutating func insert(_ object: T, at index: OrderedSet.OrderedSet<T>.Index)
+  public mutating func insert<S>(_ objects: S, at index: OrderedSet.OrderedSet<T>.Index) where T == S.Element, S : Swift.Sequence
+  public var last: T? {
+    get
+  }
+}
+extension OrderedSet.OrderedSet : Swift.ExpressibleByArrayLiteral {
+  public typealias ArrayLiteralElement = T
+}
+extension OrderedSet.OrderedSet {
+  public var count: Swift.Int {
+    get
+  }
+  public var isEmpty: Swift.Bool {
+    get
+  }
+  public var first: T? {
+    get
+  }
+  public func index(after index: Swift.Int) -> Swift.Int
+  public typealias Index = Swift.Int
+  public var startIndex: Swift.Int {
+    get
+  }
+  public var endIndex: Swift.Int {
+    get
+  }
+  public subscript(index: OrderedSet.OrderedSet<T>.Index) -> T {
+    get
+    set
+  }
+}
+public func + <T, S>(lhs: OrderedSet.OrderedSet<T>, rhs: S) -> OrderedSet.OrderedSet<T> where T : Swift.Hashable, T == S.Element, S : Swift.Sequence
+public func += <T, S>(lhs: inout OrderedSet.OrderedSet<T>, rhs: S) where T : Swift.Hashable, T == S.Element, S : Swift.Sequence
+public func - <T, S>(lhs: OrderedSet.OrderedSet<T>, rhs: S) -> OrderedSet.OrderedSet<T> where T : Swift.Hashable, T == S.Element, S : Swift.Sequence
+public func -= <T, S>(lhs: inout OrderedSet.OrderedSet<T>, rhs: S) where T : Swift.Hashable, T == S.Element, S : Swift.Sequence
+extension OrderedSet.OrderedSet : Swift.Equatable {
+}
+public func == <T>(lhs: OrderedSet.OrderedSet<T>, rhs: OrderedSet.OrderedSet<T>) -> Swift.Bool where T : Swift.Hashable
+extension OrderedSet.OrderedSet : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension OrderedSet.OrderedSet : Swift.RandomAccessCollection {
+  public typealias Element = T
+  public typealias Indices = Swift.Range<OrderedSet.OrderedSet<T>.Index>
+  public typealias Iterator = Swift.IndexingIterator<OrderedSet.OrderedSet<T>>
+  public typealias SubSequence = Swift.Slice<OrderedSet.OrderedSet<T>>
+}

@@ -7,15 +7,17 @@
 
 #import "Flutter/Flutter.h"
 
-@interface SnUniFlutterProxy()
+@interface SnUniFlutterProxy ()
 
-+ (instancetype) proxy;
++ (instancetype)proxy;
 
-- (void)put:(NSString*)engineId engine:(FlutterEngine*)engine;
+- (FlutterEngine *)createEngine:(NSString *)entryPoint;
 
-- (FlutterEngine*)get:(NSString*)engineId;
+- (void)put:(NSString *)engineId engine:(FlutterEngine *)engine;
 
-- (void)remove:(NSString*)engineId;
+- (FlutterEngine *)get:(NSString *)engineId;
+
+- (void)remove:(NSString *)engineId;
 
 - (void)invokeUniCallback:(id)args;
 

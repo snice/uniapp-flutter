@@ -16,21 +16,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)share;
 
-- (void)addMsgProtocol:(NSString*)instanceId protocol:(id<SnUniFlutterMsgProtocol>)protocol;
+- (void)addMsgProtocol:(NSString *)instanceId protocol:(id <SnUniFlutterMsgProtocol>)protocol;
 
-- (void)removeMsgProtol:(NSString*)instanceId;
+- (void)removeMsgProtol:(NSString *)instanceId;
 
-- (void)addUniCallback:(NSString*)callbackId callback:(UniModuleKeepAliveCallback)callback;
+- (void)addUniCallback:(NSString *)callbackId callback:(UniModuleKeepAliveCallback)callback;
 
-- (void)addFlutterCallback:(NSString*)callbackId callback:(FlutterResult)callback;
+- (void)addFlutterCallback:(NSString *)callbackId callback:(FlutterResult)callback;
 
-- (void)postMessage:(NSString*)instanceId method:(NSString*)method params:(NSDictionary*)params;
+- (void)postMessage:(NSString *)instanceId method:(NSString *)method params:(NSDictionary *)params;
 
-- (void)invokeUniCallback:(NSString*)callbackId params:(NSDictionary*)params;
+- (void)invokeUniCallback:(NSString *)callbackId params:(NSDictionary *)params;
 
-- (void)invokeKeepAliveUniCallback:(NSString*)callbackId params:(NSDictionary*)params;
+- (void)invokeKeepAliveUniCallback:(NSString *)callbackId params:(NSDictionary *)params;
 
-- (void)invokeFlutterCallback:(NSString*)callbackId params:(NSDictionary*)params;
+- (void)invokeFlutterCallback:(NSString *)callbackId params:(NSDictionary *)params;
 
 @end
 

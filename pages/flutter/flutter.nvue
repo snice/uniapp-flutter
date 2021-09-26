@@ -9,7 +9,7 @@ export default {
 		return {
 			canPop: false,
 			instanceId: 'topMain',
-			entryPoint: 'main',
+			entryPoint: 'topMain',
 			params: {
 				a: 1
 			}

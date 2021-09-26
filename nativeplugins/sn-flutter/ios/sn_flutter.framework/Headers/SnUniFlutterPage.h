@@ -11,9 +11,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SnUniFlutterPage : FlutterViewController<SnUniFlutterMsgProtocol>
+@interface SnUniFlutterPage : FlutterViewController <SnUniFlutterMsgProtocol>
 
-- (instancetype)initWithParams:(NSDictionary*)params;
+- (instancetype)initWithParams:(NSDictionary *)params;
 
 @end
 

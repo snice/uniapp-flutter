@@ -41,7 +41,9 @@
                 ]
             },
             /* ios打包配置 */
-            "ios" : {},
+            "ios" : {
+                "urltypes" : "dd"
+            },
             /* SDK配置 */
             "sdkConfigs" : {
                 "ad" : {}
@@ -52,7 +54,7 @@
                 "__plugin_info__" : {
                     "name" : "Flutter插件",
                     "description" : "提供Flutter框架集成",
-                    "platforms" : "Android",
+                    "platforms" : "Android,iOS",
                     "url" : "",
                     "android_package_name" : "",
                     "ios_bundle_id" : "",
